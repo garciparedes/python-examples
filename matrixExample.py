@@ -1,3 +1,8 @@
+"""
+Author: Sergio Garcia Prado
+        www.garciparedes.me
+""""
+
 from random import randint
 
 dimension = 30

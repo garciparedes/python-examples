@@ -1,3 +1,10 @@
+"""
+Author: Sergio Garcia Prado
+        www.garciparedes.me
+
+Fibonacci example implemented recursive and Iterative mind.
+""""
+
 
 import time
 
