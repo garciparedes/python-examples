@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+
+"""
+URL: http://docs.graphene-python.org/en/latest/types/scalars/
+"""
+
 import datetime
 
 import graphene
