@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 URL: http://docs.graphene-python.org/en/latest/types/abstracttypes/
