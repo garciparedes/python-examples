@@ -2,7 +2,7 @@ from graphene import relay, ObjectType, AbstractType
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from cookbook.ingredients.models import Category, Ingredient
+from .models import Category, Ingredient
 
 
 # Graphene will automatically map the Category model's fields onto the CategoryNode.

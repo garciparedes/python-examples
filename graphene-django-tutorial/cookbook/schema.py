@@ -1,11 +1,12 @@
 import graphene
 
-import cookbook.ingredients.schema
+from .ingredients import schema as i_schema
 
 
-class Query(cookbook.ingredients.schema.Query, graphene.ObjectType):
+class Query(i_schema.Query, graphene.ObjectType):
     # This class will inherit from multiple Queries
     # as we begin to add more apps to our project
     pass
+
 
 schema = graphene.Schema(query=Query)
