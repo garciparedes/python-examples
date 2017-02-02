@@ -3,28 +3,31 @@ Author: Sergio Garcia Prado
         www.garciparedes.me
 
 Fibonacci example implemented recursive and Iterative mind.
-""""
-
+"""
 
 import time
 
-"""                            Funtions                            """
+from pip._vendor.distlib.compat import raw_input
 
+"""                            Funtions                            """
 
 """
 Recursive Version
 """
+
+
 def recursiveFib(n):
-    if (n<2):
+    if (n < 2):
         return n
     else:
-        return (recursiveFib(n-1) + recursiveFib(n-2))
-
+        return (recursiveFib(n - 1) + recursiveFib(n - 2))
 
 
 """
 Iterative Version
 """
+
+
 def iterativeFib(n):
     i = 1
     j = 0
@@ -34,22 +37,20 @@ def iterativeFib(n):
     return j
 
 
-
 """                            MAIN                            """
 
-print """Fibonacci Example"""
-
+print("""Fibonacci Example""")
 
 number = int(raw_input("Insert Integer Number: "))
-print ''
-print """Iterative Version"""
+print('')
+print("""Iterative Version""")
 start = time.time()
-print iterativeFib(number)
-print "it took", time.time() - start, "seconds."
+print(iterativeFib(number))
+print("it took", time.time() - start, "seconds.")
 
-print ''
+print('')
 
-print """Recursive Version"""
+print("""Recursive Version""")
 start = time.time()
-print recursiveFib(number)
-print "it took", time.time() - start, "seconds."
+print(recursiveFib(number))
+print("it took", time.time() - start, "seconds.")
