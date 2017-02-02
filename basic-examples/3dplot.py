@@ -20,9 +20,9 @@ import random
 fig = pylab.figure()
 ax = Axes3D(fig)
 
-sequence_containing_x_vals = range(0,100)
-sequence_containing_y_vals = range(0,100)
-sequence_containing_z_vals = range(0,100)
+sequence_containing_x_vals = list(range(0,100))
+sequence_containing_y_vals = list(range(0,100))
+sequence_containing_z_vals = list(range(0,100))
 
 random.shuffle(sequence_containing_x_vals)
 random.shuffle(sequence_containing_y_vals)
