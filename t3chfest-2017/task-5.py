@@ -5,7 +5,7 @@ def solution(A, D):
     # write your code in Python 2.7
     season = 0
     M = [False for col in range(len(A))]
-    iterator = A[0:D]
+    iterator = A[0:min(D, len(A))]
     while(season < len(A) + 1):
         for i, a in enumerate(iterator):
             if (a >= 0 and a <= season):
