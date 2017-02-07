@@ -1,29 +1,22 @@
 # you can write to stdout for debugging purposes, e.g.
 # print "this is a debug message"
-import numpy as np
 
 def solution(A, D):
     # write your code in Python 2.7
     season = 0
     M = [False for col in range(len(A))]
-
     iterator = A[0:D]
-    while(season < len(A)):
+    while(season < len(A) + 1):
         for i, a in enumerate(iterator):
             if (a >= 0 and a <= season):
                 M[i] = True
-                if len(iterator) < len(A):
-                    iterator.extend(range(i,i+D))
-                    pass
-        print((M))
+                iterator.extend(A[(len(iterator)):min(i+D+1,len(A))])
         j = D
         while (j > 0):
             if(M[-j]):
                 return season
             j -= 1
         season += 1
-
-
     return -1
 
 
