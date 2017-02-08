@@ -6,8 +6,8 @@ import collections
 import itertools
 import multiprocessing
 
-class SimpleMapReduce(object):
 
+class SimpleMapReduce(object):
     def __init__(self, map_func, reduce_func, num_workers=None):
         """
         map_func

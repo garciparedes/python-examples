@@ -5,29 +5,27 @@ https://pymotw.com/3/multiprocessing/mapreduce.html
 import multiprocessing
 import string
 
-from multiprocessing_mapreduce import SimpleMapReduce
+from multiprocessing_examples.map_reduce.pymotw_3_example.multiprocessing_mapreduce import SimpleMapReduce
+
 
 def file_to_words(filename):
     """Read a file and return a sequence of (word, occurances) values.
     """
-    STOP_WORDS = set([
-            'a', 'an', 'and', 'are', 'as', 'be', 'by', 'for', 'if', 'in',
-            'is', 'it', 'of', 'or', 'py', 'rst', 'that', 'the', 'to', 'with',
-            ])
-    TR = string.maketrans(string.punctuation, ' ' * len(string.punctuation))
-
-    print multiprocessing.current_process().name, 'reading', filename
+    STOP_WORDS = {'a', 'an', 'and', 'are', 'as', 'be', 'by', 'for',
+                  'if', 'in', 'is', 'it', 'of', 'or', 'py', 'rst',
+                  'that', 'the', 'to', 'with'}
+    print(multiprocessing.current_process().name, 'reading', filename)
     output = []
 
     with open(filename, 'rt') as f:
         for line in f:
-            if line.lstrip().startswith('..'): # Skip rst comment lines
+            if line.lstrip().startswith('..'):  # Skip rst comment lines
                 continue
-            line = line.translate(TR) # Strip punctuation
+            line = line.translate(string.punctuation)  # Strip punctuation
             for word in line.split():
                 word = word.lower()
                 if word.isalpha() and word not in STOP_WORDS:
-                    output.append( (word, 1) )
+                    output.append((word, 1))
     return output
 
 
@@ -43,15 +41,15 @@ if __name__ == '__main__':
     import operator
     import glob
 
-    input_files = glob.glob('*.rst')
+    input_files = glob.glob('*.py')
 
     mapper = SimpleMapReduce(file_to_words, count_words)
     word_counts = mapper(input_files)
     word_counts.sort(key=operator.itemgetter(1))
     word_counts.reverse()
 
-    print '\nTOP 20 WORDS BY FREQUENCY\n'
+    print('\nTOP 20 WORDS BY FREQUENCY\n')
     top20 = word_counts[:20]
     longest = max(len(word) for word, count in top20)
     for word, count in top20:
-        print '%-*s: %5s' % (longest+1, word, count)
+        print('%-*s: %5s' % (longest + 1, word, count))
