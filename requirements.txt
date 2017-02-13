@@ -4,3 +4,5 @@ graphene-django
 matplotlib
 wolframalpha
 pybluez
+pandas
+numpy
