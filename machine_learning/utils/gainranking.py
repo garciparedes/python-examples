@@ -76,12 +76,4 @@ if __name__ == '__main__':
     data_pd = pd.DataFrame(data, columns=columns, dtype="category")
 
     tennis_gain = GainRanking(data_pd, columns[-1])
-
-    win = tennis_gain.get_gain_win()
-
-    print(win)
-
-    for value in data_pd[win].unique():
-        print(data_pd.columns != win)
-        print(data_pd[data_pd[win] == value])
-
+    print(tennis_gain.get_gain_list())
