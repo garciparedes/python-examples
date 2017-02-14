@@ -1,10 +1,10 @@
 class LabeledTree(object):
     def __init__(self, data):
         self.data = data
-        self.children = []
+        self.children = {}
 
     def add_child(self, label, obj):
-        self.children.append((label, obj))
+        self.children[label] = obj
 
     def __str__(self):
         return self.str()
@@ -13,12 +13,12 @@ class LabeledTree(object):
 
         str_out = str(self.data)
 
-        for child in self.children:
+        for key, value in self.children.items():
 
             try:
-                value = child[1].str(deep + 1)
+                value = value.str(deep + 1)
             except AttributeError:
-                value = child[1]
+                value = value
 
-            str_out += "\n" + deep * "\t" + str(child[0]) + " --> " + str(value)
+            str_out += "\n" + deep * "\t" + str(key) + " --> " + str(value)
         return str_out
