@@ -11,22 +11,16 @@ class GainRanking:
         self.data = data_input
         self.class_name = class_name
         self.debug = debug
+        self.h_S = self.class_entropy()
+        self.gain_list = self.get_gain_list()
 
-    def get_gain_ranking(self):
-        h_S = self.class_entropy()
-
-        ranking = pd.Series(index=range(self.data.shape[1] - 1))
-
+    def get_gain_list(self):
         columns = self.data.columns[self.data.columns != self.class_name]
-        for i in range(self.data.shape[1] - 2):
-            sub_result = self.gain(self.data[columns], h_S)
-            ranking[i] = sub_result.idxmax()
-            columns = columns[columns != sub_result.idxmax()]
-            if self.debug:
-                print(sub_result)
-        ranking.iloc[-1] = columns[0]
+        self.gain_list = self.gain(self.data[columns], self.h_S)
+        return self.gain_list
 
-        return ranking
+    def get_gain_win(self):
+        return self.gain_list.idxmax()
 
     def gain(self, subdata, h_S):
         result = pd.Series(index=subdata.columns)
@@ -81,6 +75,13 @@ if __name__ == '__main__':
 
     data_pd = pd.DataFrame(data, columns=columns, dtype="category")
 
-    play_tennis_gain_ranking = GainRanking(data_pd, columns[-1])
+    tennis_gain = GainRanking(data_pd, columns[-1])
 
-    print(play_tennis_gain_ranking.get_gain_ranking())
+    win = tennis_gain.get_gain_win()
+
+    print(win)
+
+    for value in data_pd[win].unique():
+        print(data_pd.columns != win)
+        print(data_pd[data_pd[win] == value])
+
