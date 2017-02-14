@@ -6,14 +6,14 @@ def solution(A, D):
     season = 0
     M = [False for col in range(len(A))]
     iterator = A[0:min(D, len(A))]
-    while(season < len(A) + 1):
+    while (season < len(A) + 1):
         for i, a in enumerate(iterator):
             if (a >= 0 and a <= season):
                 M[i] = True
-                iterator.extend(A[(len(iterator)):min(i+D+1,len(A))])
+                iterator.extend(A[(len(iterator)):min(i + D + 1, len(A))])
         j = D
         while (j > 0):
-            if(M[-j]):
+            if (M[-j]):
                 return season
             j -= 1
         season += 1

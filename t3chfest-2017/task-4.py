@@ -2,7 +2,7 @@
 # print 'this is a debug message'
 
 def solution(A, B):
-    resultList, remainderList = [str(A//B)], [A % B]
+    resultList, remainderList = [str(A // B)], [A % B]
     A %= B
     stop = False
     while A != 0 and not stop:
@@ -21,8 +21,8 @@ def solution(A, B):
         return ''.join(resultList)
 
 
-print(solution(12,3))
-print(solution(1,2))
-print(solution(5,4))
-print(solution(1,3))
-print(solution(3,28))
+print(solution(12, 3))
+print(solution(1, 2))
+print(solution(5, 4))
+print(solution(1, 3))
+print(solution(3, 28))

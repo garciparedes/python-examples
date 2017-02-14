@@ -4,12 +4,12 @@
 def solution(T):
     c = find_capital(T)
     Graph = list(enumerate(T));
-    Distances = [0] * (len(T)-1)
+    Distances = [0] * (len(T) - 1)
 
     deep = 0
     Graph.pop(c)
     Queue = [c]
-    while(len(Queue) != 0):
+    while (len(Queue) != 0):
 
         if (Queue[0] != -1):
             Queue.append(-1)
@@ -31,4 +31,4 @@ def find_capital(T):
             return deep
 
 
-print solution([9, 1, 4, 9, 0, 4, 8, 9, 0, 1])
+print(solution([9, 1, 4, 9, 0, 4, 8, 9, 0, 1]))
