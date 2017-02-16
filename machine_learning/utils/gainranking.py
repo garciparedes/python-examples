@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from data_sets.data_sets import DataSets
 
 
 class GainRanking:
@@ -48,32 +49,7 @@ class GainRanking:
 
 
 if __name__ == '__main__':
-    outLook = pd.Series(["Sunny", "Overcast", "Rain"], dtype="category")
-    temp = pd.Series(["Hot", "Mild", "Cold"], dtype="category")
-    humidity = pd.Series(["High", "Normal"], dtype="category")
-    wind = pd.Series(["Weak", "Strong"], dtype="category")
-    playTennis = pd.Series(["Yes", "No"], dtype="category")
+    data_pd = DataSets.get_weber_nominal()
 
-    columns = pd.Index(["Outlook", "Temperature", "Humidity", "Wind", "PlayTennis"])
-
-    data = [
-        [outLook[0], temp[0], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[0], humidity[0], wind[1], playTennis[1]],
-        [outLook[1], temp[0], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[1], playTennis[1]],
-        [outLook[1], temp[2], humidity[1], wind[1], playTennis[0]],
-        [outLook[0], temp[1], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[1], wind[0], playTennis[0]],
-        [outLook[0], temp[1], humidity[1], wind[1], playTennis[0]],
-        [outLook[1], temp[1], humidity[0], wind[1], playTennis[0]],
-        [outLook[1], temp[0], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[1], playTennis[1]],
-    ]
-
-    data_pd = pd.DataFrame(data, columns=columns, dtype="category")
-
-    tennis_gain = GainRanking(data_pd, columns[-1])
+    tennis_gain = GainRanking(data_pd, data_pd.columns[-1])
     print(tennis_gain.get_gain_list())

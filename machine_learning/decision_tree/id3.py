@@ -1,4 +1,6 @@
 import pandas as pd
+
+from data_sets.data_sets import DataSets
 from machine_learning.utils.gainranking import GainRanking
 from data_structures.labeled_tree import LabeledTree
 
@@ -11,13 +13,7 @@ class ID3:
 
         pass
 
-    def generate_tree(self, training_set):
-
-        return self.generate_sub_tree(training_set)
-
-        pass
-
-    def generate_sub_tree(self, data_pd):
+    def generate_tree(self, data_pd):
 
         tennis_gain = GainRanking(data_pd, self.class_name)
         win = tennis_gain.get_gain_win()
@@ -37,37 +33,14 @@ class ID3:
                 tree.add_child(v1, None)
 
             else:
-                tree.add_child(v1, self.generate_sub_tree(d))
+                tree.add_child(v1, self.generate_tree(d))
 
         return tree
 
 
 if __name__ == '__main__':
-    outLook = pd.Series(["Sunny", "Overcast", "Rain"], dtype="category")
-    temp = pd.Series(["Hot", "Mild", "Cold"], dtype="category")
-    humidity = pd.Series(["High", "Normal"], dtype="category")
-    wind = pd.Series(["Weak", "Strong"], dtype="category")
-    playTennis = pd.Series(["Yes", "No"], dtype="category")
+    data_pd = DataSets.get_weber_nominal()
+    id3_tennis = ID3(data_pd, data_pd.columns[-1])
 
-    columns = pd.Index(["Outlook", "Temperature", "Humidity", "Wind", "PlayTennis"])
-
-    data = [
-        [outLook[0], temp[0], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[0], humidity[0], wind[1], playTennis[1]],
-        [outLook[1], temp[0], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[1], playTennis[1]],
-        [outLook[1], temp[2], humidity[1], wind[1], playTennis[0]],
-        [outLook[0], temp[1], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[1], wind[0], playTennis[0]],
-        [outLook[0], temp[1], humidity[1], wind[1], playTennis[0]],
-        [outLook[1], temp[1], humidity[0], wind[1], playTennis[0]],
-        [outLook[1], temp[0], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[1], playTennis[1]],
-    ]
-
-    data_pd = pd.DataFrame(data, columns=columns, dtype="category")
-
-    id3_tennis = ID3(data_pd, columns[-1])
+    pd_careval = DataSets.get_car_eval()
+    id3_careval = ID3(pd_careval, pd_careval.columns[-1])
