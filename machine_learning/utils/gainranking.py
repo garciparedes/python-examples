@@ -12,15 +12,18 @@ class GainRanking:
         self.data = data_input
         self.class_name = class_name
         self.debug = debug
-        self.h_S = self.class_entropy()
-        self.gain_list = self.get_gain_list()
+        self.h_S = self.entropy(self.data)
+        self._gain_list = None
 
-    def get_gain_list(self):
-        columns = self.data.columns[self.data.columns != self.class_name]
-        self.gain_list = self.gain(self.data[columns], self.h_S)
-        return self.gain_list
+    @property
+    def gain_list(self):
+        if self._gain_list is None:
+            columns = self.data.columns[self.data.columns != self.class_name]
+            self._gain_list = self.gain(self.data[columns], self.h_S)
+        return self._gain_list
 
-    def get_gain_win(self):
+    @property
+    def gain_winner(self):
         return self.gain_list.idxmax()
 
     def gain(self, subdata, h_S):
@@ -31,9 +34,6 @@ class GainRanking:
             p = (counts / counts.sum())
             result[column] = (h_S - (p * a).sum())
         return result
-
-    def class_entropy(self):
-        return self.entropy(self.data)
 
     def entropy(self, subdata):
         counts = subdata[self.class_name].value_counts()
@@ -47,9 +47,10 @@ class GainRanking:
             result[cat] = self.entropy(cross[subdata == cat])
         return result
 
+    def __str__(self):
+        return str(self.gain_list)
+
 
 if __name__ == '__main__':
     data_pd = DataSets.get_weber_nominal()
-
-    tennis_gain = GainRanking(data_pd, data_pd.columns[-1])
-    print(tennis_gain.get_gain_list())
+    print(GainRanking(data_pd, data_pd.columns[-1]))

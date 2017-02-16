@@ -16,7 +16,8 @@ class ID3:
     def generate_tree(self, data_pd):
 
         tennis_gain = GainRanking(data_pd, self.class_name)
-        win = tennis_gain.get_gain_win()
+        win = tennis_gain.gain_winner
+        print(tennis_gain)
 
         tree = LabeledTree(win)
 
@@ -42,5 +43,5 @@ if __name__ == '__main__':
     data_pd = DataSets.get_weber_nominal()
     id3_tennis = ID3(data_pd, data_pd.columns[-1])
 
-    pd_careval = DataSets.get_car_eval()
-    id3_careval = ID3(pd_careval, pd_careval.columns[-1])
+    # pd_careval = DataSets.get_car_eval()
+    # id3_careval = ID3(pd_careval, pd_careval.columns[-1])
