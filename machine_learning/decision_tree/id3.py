@@ -9,16 +9,9 @@ class ID3:
     def __init__(self, training_set, class_name):
         self.class_name = class_name
         self.tree = self.generate_tree(training_set)
-        print(self.tree)
-
-        pass
 
     def generate_tree(self, data_pd):
-
-        tennis_gain = GainRanking(data_pd, self.class_name)
-        win = tennis_gain.gain_winner
-        print(tennis_gain)
-
+        win = GainRanking(data_pd, self.class_name).gain_winner
         tree = LabeledTree(win)
 
         for v1 in data_pd[win].unique():
@@ -38,10 +31,21 @@ class ID3:
 
         return tree
 
+    def __str__(self):
+        return str(self.tree)
+
 
 if __name__ == '__main__':
     data_pd = DataSets.get_weber_nominal()
     id3_tennis = ID3(data_pd, data_pd.columns[-1])
+    print(id3_tennis)
 
-    # pd_careval = DataSets.get_car_eval()
-    # id3_careval = ID3(pd_careval, pd_careval.columns[-1])
+    '''
+    pd_careval = DataSets.get_car_eval()
+    id3_careval = ID3(pd_careval, pd_careval.columns[-1])
+    print(id3_careval)
+    '''
+
+    pd_credit = DataSets.get_credit().ix[:, 1:]
+    id3_credit = ID3(pd_credit, pd_credit.columns[0])
+    print(id3_credit)

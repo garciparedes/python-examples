@@ -34,3 +34,7 @@ class DataSets:
     @staticmethod
     def get_car_eval():
         return pd.read_csv('./data_sets/careval.csv')
+
+    @staticmethod
+    def get_credit():
+        return pd.read_csv('./data_sets/credit.csv')
