@@ -37,7 +37,7 @@ class LogicDataSet():
 
 
 def l(a, b, c, d, e):
-    return bool(not (a and b) or not (c and d)) != e
+    return bool(not (a and b) or not (c and d)) != bool(e)
 
 
 if __name__ == '__main__':
