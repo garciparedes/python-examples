@@ -1,5 +1,5 @@
 import pandas as pd
-
+from .logic_data_set import LogicDataSet
 
 class DataSets:
 
@@ -64,3 +64,7 @@ class DataSets:
         ]
 
         return pd.DataFrame(data, columns=columns)
+
+    @staticmethod
+    def generate_from_logic_method(logic_m):
+        return LogicDataSet(logic_m)
