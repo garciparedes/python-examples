@@ -1,4 +1,6 @@
 import pandas as pd
+
+from data_sets.data_sets import DataSets
 from machine_learning.utils.gainranking import GainRanking
 from data_structures.labeled_tree import LabeledTree
 
@@ -7,21 +9,9 @@ class ID3:
     def __init__(self, training_set, class_name):
         self.class_name = class_name
         self.tree = self.generate_tree(training_set)
-        print(self.tree)
 
-        pass
-
-    def generate_tree(self, training_set):
-
-        return self.generate_sub_tree(training_set)
-
-        pass
-
-    def generate_sub_tree(self, data_pd):
-
-        tennis_gain = GainRanking(data_pd, self.class_name)
-        win = tennis_gain.get_gain_win()
-
+    def generate_tree(self, data_pd):
+        win = GainRanking(data_pd, self.class_name).gain_winner
         tree = LabeledTree(win)
 
         for v1 in data_pd[win].unique():
@@ -37,37 +27,25 @@ class ID3:
                 tree.add_child(v1, None)
 
             else:
-                tree.add_child(v1, self.generate_sub_tree(d))
+                tree.add_child(v1, self.generate_tree(d))
 
         return tree
 
+    def __str__(self):
+        return str(self.tree)
+
 
 if __name__ == '__main__':
-    outLook = pd.Series(["Sunny", "Overcast", "Rain"], dtype="category")
-    temp = pd.Series(["Hot", "Mild", "Cold"], dtype="category")
-    humidity = pd.Series(["High", "Normal"], dtype="category")
-    wind = pd.Series(["Weak", "Strong"], dtype="category")
-    playTennis = pd.Series(["Yes", "No"], dtype="category")
+    data_pd = DataSets.get_weber_nominal()
+    id3_tennis = ID3(data_pd, data_pd.columns[-1])
+    print(id3_tennis)
 
-    columns = pd.Index(["Outlook", "Temperature", "Humidity", "Wind", "PlayTennis"])
+    '''
+    pd_careval = DataSets.get_car_eval()
+    id3_careval = ID3(pd_careval, pd_careval.columns[-1])
+    print(id3_careval)
+    '''
 
-    data = [
-        [outLook[0], temp[0], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[0], humidity[0], wind[1], playTennis[1]],
-        [outLook[1], temp[0], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[1], playTennis[1]],
-        [outLook[1], temp[2], humidity[1], wind[1], playTennis[0]],
-        [outLook[0], temp[1], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[1], wind[0], playTennis[0]],
-        [outLook[0], temp[1], humidity[1], wind[1], playTennis[0]],
-        [outLook[1], temp[1], humidity[0], wind[1], playTennis[0]],
-        [outLook[1], temp[0], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[1], playTennis[1]],
-    ]
-
-    data_pd = pd.DataFrame(data, columns=columns, dtype="category")
-
-    id3_tennis = ID3(data_pd, columns[-1])
+    pd_credit = DataSets.get_credit().ix[:, 1:]
+    id3_credit = ID3(pd_credit, pd_credit.columns[0])
+    print(id3_credit)

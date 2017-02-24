@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from data_sets.data_sets import DataSets
 
 
 class GainRanking:
@@ -11,15 +12,18 @@ class GainRanking:
         self.data = data_input
         self.class_name = class_name
         self.debug = debug
-        self.h_S = self.class_entropy()
-        self.gain_list = self.get_gain_list()
+        self.h_S = self.entropy(self.data)
+        self._gain_list = None
 
-    def get_gain_list(self):
-        columns = self.data.columns[self.data.columns != self.class_name]
-        self.gain_list = self.gain(self.data[columns], self.h_S)
-        return self.gain_list
+    @property
+    def gain_list(self):
+        if self._gain_list is None:
+            columns = self.data.columns[self.data.columns != self.class_name]
+            self._gain_list = self.gain(self.data[columns], self.h_S)
+        return self._gain_list
 
-    def get_gain_win(self):
+    @property
+    def gain_winner(self):
         return self.gain_list.idxmax()
 
     def gain(self, subdata, h_S):
@@ -30,9 +34,6 @@ class GainRanking:
             p = (counts / counts.sum())
             result[column] = (h_S - (p * a).sum())
         return result
-
-    def class_entropy(self):
-        return self.entropy(self.data)
 
     def entropy(self, subdata):
         counts = subdata[self.class_name].value_counts()
@@ -46,34 +47,10 @@ class GainRanking:
             result[cat] = self.entropy(cross[subdata == cat])
         return result
 
+    def __str__(self):
+        return str(self.gain_list)
+
 
 if __name__ == '__main__':
-    outLook = pd.Series(["Sunny", "Overcast", "Rain"], dtype="category")
-    temp = pd.Series(["Hot", "Mild", "Cold"], dtype="category")
-    humidity = pd.Series(["High", "Normal"], dtype="category")
-    wind = pd.Series(["Weak", "Strong"], dtype="category")
-    playTennis = pd.Series(["Yes", "No"], dtype="category")
-
-    columns = pd.Index(["Outlook", "Temperature", "Humidity", "Wind", "PlayTennis"])
-
-    data = [
-        [outLook[0], temp[0], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[0], humidity[0], wind[1], playTennis[1]],
-        [outLook[1], temp[0], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[2], humidity[1], wind[1], playTennis[1]],
-        [outLook[1], temp[2], humidity[1], wind[1], playTennis[0]],
-        [outLook[0], temp[1], humidity[0], wind[0], playTennis[1]],
-        [outLook[0], temp[2], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[1], wind[0], playTennis[0]],
-        [outLook[0], temp[1], humidity[1], wind[1], playTennis[0]],
-        [outLook[1], temp[1], humidity[0], wind[1], playTennis[0]],
-        [outLook[1], temp[0], humidity[1], wind[0], playTennis[0]],
-        [outLook[2], temp[1], humidity[0], wind[1], playTennis[1]],
-    ]
-
-    data_pd = pd.DataFrame(data, columns=columns, dtype="category")
-
-    tennis_gain = GainRanking(data_pd, columns[-1])
-    print(tennis_gain.get_gain_list())
+    data_pd = DataSets.get_weber_nominal()
+    print(GainRanking(data_pd, data_pd.columns[-1]))

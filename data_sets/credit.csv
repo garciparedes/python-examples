@@ -1,0 +1,15 @@
+Nº,Riesgo, Historia,Deuda,Avales,Ingresos
+1,alto,mala,alta,no,0 a 2M
+2,alto,desconocida,alta,no,2 a 5M
+3,moderado,desconocida,baja,no,2 a 5M
+4,alto,desconocida,baja,no,0 a 2M
+5,bajo,desconocida,baja,no,más de 5M
+6,bajo,desconocida,baja,adecuados,más de 5M
+7,alto,mala,baja,no,0 a 2M
+8,moderado,mala,baja,adecuados,más de 5M
+9,bajo,buena,baja,no,más de 5M
+10,bajo,buena,alta,adecuados,más de 5M
+11,alto,buena,alta,no,0 a 2M
+12,moderado,buena,alta,no,2 a 5M
+13,bajo,buena,alta,no,más de 5M
+14,alto,mala,alta,no,2 a 5M
