@@ -6,15 +6,15 @@ from data_structures.labeled_tree import LabeledTree
 
 
 class ID3:
-    def __init__(self, training_set, class_name):
+    def __init__(self, training_set, class_name, ranking=GainRanking):
         self.class_name = class_name
+        self.ranking = ranking
         self.tree = self.generate_tree(training_set)
 
     def generate_tree(self, data_pd):
-        win = GainRanking(data_pd, self.class_name).gain_winner
+        win, categories = self.ranking(data_pd, self.class_name).gain_winner
         tree = LabeledTree(win)
-
-        for v1 in data_pd[win].unique():
+        for v1 in categories:
             d = data_pd.ix[data_pd[win] == v1, data_pd.columns != win]
 
             if len(d[self.class_name].unique()) == 1:

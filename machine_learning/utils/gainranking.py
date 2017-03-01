@@ -19,12 +19,12 @@ class GainRanking:
     def gain_list(self):
         if self._gain_list is None:
             columns = self.data.columns[self.data.columns != self.class_name]
-            self._gain_list = self.gain(self.data[columns], self.h_S)
+            self._gain_list, self.data.ix[:, columns] = self.gain(self.data.ix[:, columns], self.h_S)
         return self._gain_list
 
     @property
     def gain_winner(self):
-        return self.gain_list.idxmax()
+        return self.gain_list.idxmax(), self.data[self.gain_list.idxmax()]
 
     def gain(self, subdata, h_S):
         result = pd.Series(index=subdata.columns)
@@ -33,7 +33,7 @@ class GainRanking:
             counts = subdata[column].value_counts()
             p = (counts / counts.sum())
             result[column] = (h_S - (p * a).sum())
-        return result
+        return result, subdata
 
     def entropy(self, subdata):
         counts = subdata[self.class_name].value_counts()
