@@ -38,7 +38,24 @@ class DataSets:
 
     @staticmethod
     def get_weather():
-        return pd.read_csv(DataSets._get_path() + '/weather.csv')
+        types = {
+            'outlook': 'category',
+            'temperature': 'int32', 'humidity': 'int32',
+            'windy': 'category', 'play': 'category',
+        }
+
+        return pd.read_csv(DataSets._get_path() + '/weather.csv', dtype=types)
+
+    @staticmethod
+    def get_weather_semi_nominal():
+        types = {
+            'Nº': 'int32', 'Outlook': 'category',
+            'Temperature': 'int32', 'Humidity': 'category',
+            'Wind': 'category', 'PlayTennis': 'category',
+        }
+
+        return pd.read_csv(DataSets._get_path() + '/weather_semi_nominal.csv', dtype=types)
+
 
     @staticmethod
     def get_car_eval():

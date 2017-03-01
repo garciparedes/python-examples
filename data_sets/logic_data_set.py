@@ -14,7 +14,7 @@ class LogicDataSet():
     @property
     def data(self):
         if self._data is None:
-            self.generateData()
+            self.generate_data()
         return self._data
 
     @property
@@ -29,7 +29,7 @@ class LogicDataSet():
     def __str__(self):
         return str(self.data)
 
-    def generateData(self):
+    def generate_data(self):
         self._data = np.zeros([2 ** self.num_vars, self.num_vars + 1], dtype=bool)
         for i in range(self.num_vars):
             self._data[:, i] = np.tile([0] * 2 ** i + [1] * 2 ** i, [2 ** (self.num_vars - i - 1)])
