@@ -85,3 +85,16 @@ class DataSets:
     @staticmethod
     def generate_from_logic_method(logic_m):
         return LogicDataSet(logic_m)
+
+
+    @staticmethod
+    def get_thoraric_surgery():
+
+        types = {
+            'DGN': 'category', 'PRE4': 'float64', 'PRE5': 'float64', 'PRE6': 'category', 'PRE7': 'category',
+            'PRE8': 'category', 'PRE9': 'category', 'PRE10': 'category', 'PRE11': 'category', 'PRE14': 'category',
+            'PRE17': 'category', 'PRE19': 'category', 'PRE25': 'category', 'PRE30': 'category', 'PRE32': 'category',
+            'AGE': 'int32', 'Risk1Yr': 'category'
+        }
+
+        return pd.read_csv(DataSets._get_path() + '/ThoraricSurgery.csv', dtype=types)
