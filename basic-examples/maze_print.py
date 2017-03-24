@@ -15,7 +15,7 @@ def stringify_list_2d(list_2d):
     for row in list_2d:
         for column in row:
             s += str(column) + S_SYMBOL
-        s += '\n'
+        s += B_SYMBOL
     return s
 
 
