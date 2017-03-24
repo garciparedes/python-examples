@@ -7,7 +7,8 @@ B_SYMBOL = '\n'
 
 
 def generate_random_maze(rows, columns):
-    return [[random.getrandbits(1) for i in range(columns)] for j in range(rows)]
+    dist = [0] * 3 + [1] * 1
+    return [[random.choice(dist) for i in range(columns)] for j in range(rows)]
 
 
 def stringify_list_2d(list_2d):
