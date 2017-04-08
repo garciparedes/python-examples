@@ -24,6 +24,11 @@ def distance_to_set(instance, set, function):
         result.append(function(instance, item))
     return result
 
+
+def normalize(x):
+    return (x - x.min(axis=0)) / (x.max(axis=0) - x.min(axis=0))
+
+
 if __name__ == '__main__':
     estrellas = [
         [1, 1],
@@ -40,15 +45,18 @@ if __name__ == '__main__':
 
     instancia = [3, 3]
 
-    x = np.array(estrellas+circulos)
+    x = np.array(estrellas + circulos)
+    y = np.array(instancia)
 
-    x_normed = (x - x.min(axis=0))/ (x.max(axis=0) -x.min(axis=0))
+    x_normed = normalize(x)
+    y_normed = (y - x.min(axis=0)) / (x.max(axis=0) - x.min(axis=0))
+
     # print(x_normed)
 
     # print(estrellas)
     # print(circulos)
     # print(instancia)
-    print(distance_to_set(instancia, x_normed, euclidean_distance))
-    print(distance_to_set(instancia, x_normed, weighted_euclidean_distance))
-    print(distance_to_set(instancia, estrellas+circulos, manhattan_distance))
-    print(distance_to_set(instancia, estrellas+circulos, hamming_distance))
+    print(distance_to_set(y_normed, x_normed, euclidean_distance))
+    print(distance_to_set(y_normed, x_normed, weighted_euclidean_distance))
+    print(distance_to_set(instancia, estrellas + circulos, manhattan_distance))
+    print(distance_to_set(instancia, estrellas + circulos, hamming_distance))
