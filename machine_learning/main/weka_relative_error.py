@@ -11,4 +11,4 @@ if __name__ == "__main__":
 
     for error_ratio in error_ratio_list:
         error_count = (file_error['error'].abs() / file_error['actual']<= error_ratio).sum()
-        print('Max Rel. Error: ' + str(error_ratio) + '\t-> Error Ratio:\t'  + str(error_count / float(file_error.shape[0])))
+        print('Max Rel. Error: ' + str(error_ratio) + '\t-> Error Ratio:\t'  + str(1 - error_count / float(file_error.shape[0])))
