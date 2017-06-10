@@ -1,8 +1,8 @@
 import pandas as pd
 from .logic_data_set import LogicDataSet
 
-class DataSets:
 
+class DataSets:
     @staticmethod
     def _get_path():
         return "./data_sets"
@@ -56,7 +56,6 @@ class DataSets:
 
         return pd.read_csv(DataSets._get_path() + '/weather_semi_nominal.csv', dtype=types)
 
-
     @staticmethod
     def get_car_eval():
         return pd.read_csv(DataSets._get_path() + '/careval.csv')
@@ -86,10 +85,20 @@ class DataSets:
     def generate_from_logic_method(logic_m):
         return LogicDataSet(logic_m)
 
+    @staticmethod
+    def get_wiki_vote():
+        return pd.read_csv(DataSets._get_path() + '/wiki-Vote.csv')
+
+    @staticmethod
+    def get_followers():
+        return pd.read_csv(DataSets._get_path() + '/followers.csv')
+
+    @staticmethod
+    def get_users():
+        return pd.read_csv(DataSets._get_path() + '/users.csv')
 
     @staticmethod
     def get_thoraric_surgery():
-
         types = {
             'DGN': 'category', 'PRE4': 'float64', 'PRE5': 'float64', 'PRE6': 'category', 'PRE7': 'category',
             'PRE8': 'category', 'PRE9': 'category', 'PRE10': 'category', 'PRE11': 'category', 'PRE14': 'category',
