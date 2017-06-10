@@ -10,7 +10,9 @@ def main():
     init = tf.global_variables_initializer()
     with tf.Session() as sess:
         sess.run(init)
-        print(sess.run(tf.scatter_nd(data_set.values.tolist(), data_set.shape[0] * [1], [n, n])))
+        print(sess.run(
+            tf.scatter_nd(data_set.values.tolist(), data_set.shape[0] * [1.0],
+                          [n, n])))
 
 
 if __name__ == '__main__':
