@@ -19,6 +19,10 @@ def main():
     plt.plot(np.linspace(np.min(x),np.max(x),bins),f_x)
     plt.plot(np.linspace(np.min(y),np.max(y),bins),f_y)
 
+    plt.gca().set_ylim([0,1])
+    plt.yticks(np.arange(0,1,0.1))
+    plt.grid(True)
+
     plt.show()
 
 if __name__ == '__main__':
