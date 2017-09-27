@@ -1,16 +1,21 @@
 #! /usr/bin/python3
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import norm
+from sympy import *
+from mpmath import gamma, e
 
 def main():
 
-    plt.plot(np.linspace(0.5,1,100),norm.ppf(np.linspace(0.5,1,100)))
-    plt.grid(True)
-    plt.xlabel('alpha')
-    plt.ylabel('Z_alpha')
-    plt.show()
+    a = 0
+    b = oo
+
+    x = Symbol('x')
+    k = 2 #Symbol('k')
+
+    f = (x ** (k / 2 - 1) * e ** (-x / 2)) / (2 ** (k / 2) * gamma(k / 2))
+    g = 1 / x
+
+    print(sympify(integrate( g * f, (x, a,b))))
 
 if __name__ == '__main__':
     main()
