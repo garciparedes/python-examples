@@ -7,3 +7,4 @@ pybluez
 pandas
 numpy
 tensorflow
+scipy
