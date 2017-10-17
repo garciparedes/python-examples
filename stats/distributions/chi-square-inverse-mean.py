@@ -1,12 +1,12 @@
 #! /usr/bin/python3
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import norm
+from matplotlib import pyplot as plt
+from scipy import stats
 
 def main():
 
-    plt.plot(np.linspace(0.5,1,200),norm.ppf(np.linspace(0.5,1,200)))
+    plt.plot(np.linspace(0.5,1,200),stats.norm.ppf(np.linspace(0.5,1,200)))
     plt.grid(True)
     plt.xlabel('alpha')
     plt.ylabel('Z_alpha')
