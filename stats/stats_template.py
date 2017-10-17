@@ -1,8 +1,9 @@
 #! /usr/bin/python3
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import *
+import pandas as pd
+from matplotlib import pyplot as plt
+from scipy import stats
 
 
 def main():
