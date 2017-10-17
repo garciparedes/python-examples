@@ -24,7 +24,9 @@ def main():
     exercises = pd.DataFrame([t1,t2,t3]).T
     #print(exercises)
 
-    p_i = exercises.count()
+    p_i = np.full(3, exercises.shape[1])    
+    #p_i = exercises.count(axis=0)
+
     p_i_normalized = p_i / np.sum(p_i)
 
     t_rand = np.argmax(np.random.multinomial(1, p_i_normalized))
