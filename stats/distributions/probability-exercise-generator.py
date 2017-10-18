@@ -22,15 +22,11 @@ def main():
                    '2.25','2.35'])
 
     exercises = pd.DataFrame([t1,t2,t3]).T
-    #print(exercises)
+    # print(exercises)
 
-    p_i = np.full(3, exercises.shape[1])
+    t_rand = np.argmax(np.random.randint(0, exercises.shape[1] - 1))
 
-    p_i_normalized = p_i / np.sum(p_i)
-
-    t_rand = np.argmax(np.random.multinomial(1, p_i_normalized))
-
-    e_rand = (np.random.randint(0, exercises.count()[t_rand]))
+    e_rand = (np.random.randint(0, exercises.count()[t_rand] - 1))
 
     print(exercises.iloc[e_rand, t_rand])
 
