@@ -21,6 +21,8 @@ def main():
     e_19_4 = integrate_function(lambda x, y: 12 - 3 * x - 4 * y , 0, 1, lambda b: b ** 2, lambda b: 3 - 2 * b)
     print("E19.4:\t" + str(e_19_4))
 
-    
+    e_19_5 = integrate_function(lambda y, x: x ** 2 + y ** 2, - np.sqrt(2), 1, lambda b: b ** 2, lambda b: 2)
+    print("E19.5:\t" + str(e_19_5))
+
 if __name__ == '__main__':
     main()
