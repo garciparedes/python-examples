@@ -2,6 +2,8 @@
 
 import numpy as np
 from scipy import stats, integrate
+import cmath
+
 
 def integrate_function(f, a1, a2, b1, b2):
     return integrate.dblquad(f, a1, a2, b1 , b2)[0]
@@ -34,13 +36,13 @@ def main():
                                 lambda b1: np.abs(b1), lambda b2: np.divide(b2,2) + 3)
     print("E19.6:\t" + str(e_19_6))
 
-    '''
-    e_19_7 = integrate_function(lambda y, x: 2 * np.sqrt(1 - x ** 2 ) + 1,
-                                - np.pi / 3, np.pi / 3,
-                                lambda b1: 1 - np.sqrt(1 - b1 ** 2),
-                                lambda b2: np.sqrt(1 - b2 ** 2 ))
+
+    e_19_7 = integrate_function(lambda y, x: 2 * cmath.sqrt(1 - x ** 2 ).real + 1,
+                                - np.arccos(0.5), np.arccos(0.5),
+                                lambda b1: 1 - cmath.sqrt(1 - b1 ** 2).real,
+                                lambda b2: cmath.sqrt(1 - b2 ** 2 ).real)
     print("E19.7:\t" + str(e_19_7))
-    '''
+
 
 
     e24_1 = integrate_function(lambda y, x: 1, 0, 1,
