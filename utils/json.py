@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = "Sergio Garcia Prado"
 __license__ = "MPL-2.0"
