@@ -17,16 +17,20 @@ def main():
                    '1.31', '1.32'])
 
     t3 = np.array(['2.1','2.2','2.3','2.4','2.6',
-                   '2.7','2.8','2.9','2.13','2.18',
+                   '2.7','2.8','2.9ab','2.13','2.18',
                    '2.19','2.21','2.22','2.23','2.24',
                    '2.25','2.35'])
 
-    exercises = pd.DataFrame([t1,t2,t3]).T
+    t4 = np.array(['2.5','2.9c','2.15','2.16','2.17','lavadoras',
+                   '2.26','2.27','2.28','2.29', '2.31', '2.33'
+                   '2.37','2.38','2.39'])
+
+    exercises = pd.DataFrame([t1,t2,t3,t4]).T
     # print(exercises)
 
-    t_rand = np.argmax(np.random.randint(0, exercises.shape[1] - 1))
-
-    e_rand = (np.random.randint(0, exercises.count()[t_rand] - 1))
+    t_rand = np.random.randint(0, exercises.shape[1])
+    print(t_rand)
+    e_rand = np.random.randint(0, exercises.count()[t_rand])
 
     print(exercises.iloc[e_rand, t_rand])
 
