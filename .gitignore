@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/python,pycharm,macos,git,windows,linux
+# Created by https://www.gitignore.io/api/python,pycharm,macos,git,windows,linux,jupyternotebook
 
 logs/*
 
@@ -178,6 +178,13 @@ Temporary Items
 ### Git ###
 *.orig
 
+### JupyterNotebook ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+#
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -216,4 +223,4 @@ $RECYCLE.BIN/
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# End of https://www.gitignore.io/api/python,pycharm,macos,git,windows,linux
+# End of https://www.gitignore.io/api/python,pycharm,macos,git,windows,linux,jupyternotebook
