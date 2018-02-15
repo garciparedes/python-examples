@@ -1,13 +1,21 @@
-# Python-Examples
+# Python Examples
 
 ## Description
-TODO: Write description
 
-## Authors
-  - García Prado, Sergio: [@garciparedes](http://garciparedes.me)
+Set of awesome Python Examples.
+
+## Contents
+
+  * TODO: Write contents
+
+## Contributors
+
+  * Sergio García Prado - [@garciparedes](http://garciparedes.me)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-[Mozilla Public License Version 2.0](LICENSE)
 
-## Like it? Awesome!
-If you find this useful, consider supporting or [buying me a beer!](https://www.paypal.me/garciparedes/2) 🙂
+This repository is licensed under [Mozilla Public License Version 2.0](LICENSE).
