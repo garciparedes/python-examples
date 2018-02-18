@@ -15,10 +15,15 @@ def insertionSort1(n, arr):
             shifted = True
         else:
             arr[i] = elem
-        print(' '.join(map(str, arr)))
+    return arr
 
+
+def insertionSort2(n, arr):
+    for i in range(2, n + 1):
+        arr[:i] = insertionSort1(i, arr[:i])
+        print(' '.join(map(str, arr)))
 
 if __name__ == "__main__":
     n = int(input().strip())
     arr = list(map(int, input().strip().split(' ')))
-    insertionSort1(n, arr)
+    insertionSort2(n, arr)
