@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def main():
-    url = input.strip()
+    url = input().strip()
     path = Path(input().strip())
     opener = req.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -17,7 +17,7 @@ def main():
     for i, url in enumerate(links):
         file_name = "torrent_" + str(i) + ".torrent"
         req.urlretrieve(url, path / file_name)
-
+        print(url)
 
 if __name__ == '__main__':
     main()
