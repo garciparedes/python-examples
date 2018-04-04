@@ -224,3 +224,9 @@ $RECYCLE.BIN/
 .nfs*
 
 # End of https://www.gitignore.io/api/python,pycharm,macos,git,windows,linux,jupyternotebook
+
+# Input / Output files
+*.output
+*.out
+*.in
+*.input
