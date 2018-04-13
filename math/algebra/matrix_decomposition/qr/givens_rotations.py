@@ -2,9 +2,7 @@
 
 import enforce
 
-import scipy as sp
 import numpy as np
-import math
 
 @enforce.runtime_validation
 def rotator(A, i: int, j: int, k: int):
