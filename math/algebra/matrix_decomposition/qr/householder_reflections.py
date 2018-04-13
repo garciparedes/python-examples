@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
+from typing import Tuple
+
 import enforce
 
 import numpy as np
 
 @enforce.runtime_validation
-def reflector(A, i: int):
+def reflector(A: np.ndarray, i: int) -> np.ndarray:
     x = np.take(A, [i], 1)
     y =  np.concatenate([x[:i], [[np.sqrt(np.sum(np.power(x[i:],2)))]],
                         np.zeros([A.shape[0] - i - 1, 1])])
@@ -13,7 +15,7 @@ def reflector(A, i: int):
     return np.eye(A.shape[0]) - (2 / np.squeeze(u.T @ u)) * (u @ u.T)
 
 @enforce.runtime_validation
-def qr_householder(A):
+def qr_householder(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     Q = np.eye(A.shape[0])
     for i in range(A.shape[1]):
         R = reflector(A, i)
@@ -21,6 +23,7 @@ def qr_householder(A):
         A = R @ A
     return (Q, A)
 
+@enforce.runtime_validation
 def main() -> None:
 
     A = np.array([[1,-1,1],

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
+from typing import Tuple
+
 import enforce
 
 import numpy as np
 
 @enforce.runtime_validation
-def rotator(A, i: int, j: int, k: int):
+def rotator(A: np.ndarray, i: int, j: int, k: int) -> np.ndarray:
     G = np.eye(A.shape[0])
     r = np.sqrt(A[i, k] ** 2 + A[j, k] ** 2)
     if A[j, k] != 0:
@@ -16,7 +18,7 @@ def rotator(A, i: int, j: int, k: int):
     return G
 
 @enforce.runtime_validation
-def qr_givens(A):
+def qr_givens(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     Q = np.eye(A.shape[0])
     for j in range(A.shape[1]):
         G = np.eye(A.shape[0])
@@ -26,6 +28,7 @@ def qr_givens(A):
         A = G @ A
     return (Q, A)
 
+@enforce.runtime_validation
 def main() -> None:
 
     A = np.array([[1,-1,1],
