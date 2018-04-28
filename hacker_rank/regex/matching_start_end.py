@@ -5,8 +5,8 @@ import re
 
 
 def main():
-    Regex_Pattern = r"^\d\w{4}\.$"
-    print(str(bool(re.search(Regex_Pattern, input()))).lower())
+    regex_pattern = r"^\d\w{4}\.$"
+    print(str(bool(re.search(regex_pattern, input()))).lower())
 
 
 if __name__ == '__main__':

@@ -5,8 +5,8 @@ import re
 
 
 def main():
-    Regex_Pattern = r".{3}\W.{10}\W.{3}"
-    print(str(bool(re.search(Regex_Pattern, input()))).lower())
+    regex_pattern = r".{3}\W.{10}\W.{3}"
+    print(str(bool(re.search(regex_pattern, input()))).lower())
 
 
 if __name__ == '__main__':
