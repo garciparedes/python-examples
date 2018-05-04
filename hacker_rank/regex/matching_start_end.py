@@ -5,7 +5,7 @@ import re
 
 
 def main():
-    regex_pattern = r"^\d\w{4}\.$"
+    regex_pattern = r'^\d\w{4}\.$'
     print(str(bool(re.search(regex_pattern, input()))).lower())
 
 

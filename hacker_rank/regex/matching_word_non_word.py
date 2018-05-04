@@ -5,7 +5,7 @@ import re
 
 
 def main():
-    regex_pattern = r".{3}\W.{10}\W.{3}"
+    regex_pattern = r'.{3}\W.{10}\W.{3}'
     print(str(bool(re.search(regex_pattern, input()))).lower())
 
 
