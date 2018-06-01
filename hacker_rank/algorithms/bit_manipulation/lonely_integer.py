@@ -1,10 +1,9 @@
 #!/bin/python3
 
-import sys
 from collections import Counter
 
 
-def lonelyinteger(a):
+def lonely_integer(a):
     cnt = Counter()
     for i in a:
         cnt[i] += 1
@@ -13,5 +12,5 @@ def lonelyinteger(a):
 
 n = int(input().strip())
 a = list(map(int, input().strip().split(' ')))
-result = lonelyinteger(a)
+result = lonely_integer(a)
 print(result)
