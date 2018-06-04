@@ -6,6 +6,7 @@ REGEX_PATTERN = r'<a .*?href="(\S+)"[^<]*?>(.*?)</a>'
 REGEX_CLEAN = r"(?:<.*?/>)|(?:<(.+?)>(.+?)</\1>)"
 REGEX_SUB = r"\2"
 
+
 def remove_recursive(s: str) -> str:
     s_cleaned = re.sub(REGEX_CLEAN, REGEX_SUB, s)
     while s_cleaned != s:
@@ -15,7 +16,6 @@ def remove_recursive(s: str) -> str:
 
 
 def find_matches(s: str):
-
     matches = re.findall(REGEX_PATTERN, s, re.MULTILINE)
     matches = [list(m) for m in matches]
     for i in range(len(matches)):
@@ -23,14 +23,16 @@ def find_matches(s: str):
 
     return matches
 
+
 def main() -> None:
-    N = input()
+    n = int(input())
     s = ""
-    for i in range(int(N)):
+    for i in range(n):
         s += input()
 
     for m in find_matches(s):
         print(','.join(m))
+
 
 if __name__ == '__main__':
     main()
