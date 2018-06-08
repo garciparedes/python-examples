@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
 
 def is_weird(n: int) -> bool:

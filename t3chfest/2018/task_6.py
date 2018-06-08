@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
 bit = lambda x: x % 2
 carry = lambda x: 1 if x < 0 else -1 if x > 1 else 0

@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
 def check_vector(A):
     parity = A[0] % 2

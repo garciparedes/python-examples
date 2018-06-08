@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
 def swap(S, T):
     for i in range(len(T) - 1):
