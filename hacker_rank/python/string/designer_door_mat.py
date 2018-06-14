@@ -4,12 +4,12 @@ import enforce
 
 
 @enforce.runtime_validation
-def generate_row(i, m, middle, corner):
+def generate_row(i, m, middle, corner) -> str:
     return (middle * (i * 2 + 1)).center(m, corner)
 
 
 @enforce.runtime_validation
-def door_mat(n: int, m: int, middle=".|.", corner="-"):
+def door_mat(n: int, m: int, middle=".|.", corner="-") -> str:
     s = str()
     for i in range(n // 2):
         s += generate_row(i, m, middle, corner) + '\n'
