@@ -5,7 +5,7 @@ import enforce
 
 @enforce.runtime_validation
 def solve(s: str) -> str:
-    return ' '.join(map(lambda x: x.capitalize(), s.split(' ')))
+    return s.title()
 
 
 @enforce.runtime_validation
