@@ -7,5 +7,6 @@ def main() -> None:
         s.add(input().strip())
     print(len(s))
 
+
 if __name__ == '__main__':
     main()
