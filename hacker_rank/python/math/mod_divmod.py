@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
+from typing import Iterable
 import itertools as it
 
 
-def read_int() -> int:
+def read_int() -> Iterable[int]:
     while True:
         yield int(input().strip())
 
