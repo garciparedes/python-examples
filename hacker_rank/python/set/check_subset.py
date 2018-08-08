@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-def read_frozen_set_line():
+from typing import FrozenSet
+
+def read_frozen_set_line() -> FrozenSet[str]:
     return frozenset(input().strip().split(' '))
 
 
