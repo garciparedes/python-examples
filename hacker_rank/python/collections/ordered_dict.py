@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 from collections import OrderedDict
-import enforce
 
 
-@enforce.runtime_validation
 def main() -> None:
     n = int(input().strip())
 

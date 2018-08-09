@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 def main() -> None:
     _ = input()
     A = frozenset(input().strip().split(' '))

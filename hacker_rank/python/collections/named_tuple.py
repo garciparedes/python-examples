@@ -2,10 +2,8 @@
 
 from collections import namedtuple
 from statistics import mean
-import enforce
 
 
-@enforce.runtime_validation
 def main() -> None:
     n = int(input().strip())
     Student = namedtuple('Student', input().strip().split())

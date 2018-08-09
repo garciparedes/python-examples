@@ -2,12 +2,10 @@
 
 from datetime import datetime
 
-import enforce
 
 DATE_TIME_FORMAT = '%a %d %b %Y %H:%M:%S %z'
 
 
-@enforce.runtime_validation
 def main() -> None:
     for _ in range(int(input())):
         print('{:.0f}'.format(

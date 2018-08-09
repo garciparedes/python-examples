@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-import enforce
 import re
 
-@enforce.runtime_validation
+
 def main() -> None:
     for _ in range(int(input().strip())):
         try:

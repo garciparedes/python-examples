@@ -2,11 +2,9 @@
 
 from typing import Tuple
 
-import enforce
-
 import numpy as np
 
-@enforce.runtime_validation
+
 def reflector(A: np.ndarray, i: int) -> np.ndarray:
     x = np.take(A, [i], 1)
     y =  np.concatenate([x[:i], [[np.sqrt(np.sum(np.power(x[i:],2)))]],
@@ -14,7 +12,7 @@ def reflector(A: np.ndarray, i: int) -> np.ndarray:
     u = (x - y)
     return np.eye(A.shape[0]) - (2 / np.squeeze(u.T @ u)) * (u @ u.T)
 
-@enforce.runtime_validation
+
 def qr_householder(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     Q = np.eye(A.shape[0])
     for i in range(A.shape[1]):
@@ -23,7 +21,7 @@ def qr_householder(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         A = R @ A
     return (Q, A)
 
-@enforce.runtime_validation
+
 def main() -> None:
 
     A = np.array([[1,-1,1],

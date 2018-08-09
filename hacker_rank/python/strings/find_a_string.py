@@ -2,15 +2,11 @@
 
 import re
 
-import enforce
 
-
-@enforce.runtime_validation
 def count_matches(string: str, sub_string: str) -> int:
     return len(re.findall(r'(?=(' + sub_string + '))', string))
 
 
-@enforce.runtime_validation
 def main() -> None:
     s = input().strip()
     p = input().strip()

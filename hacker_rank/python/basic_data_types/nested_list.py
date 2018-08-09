@@ -2,10 +2,7 @@
 
 from typing import List, Tuple
 
-import enforce
 
-
-@enforce.runtime_validation
 def runner_up(arr: List[Tuple[str, float]]) -> List[Tuple[str, float]]:
     arr.sort(key=lambda x: x[1])
     i = 0
@@ -19,7 +16,6 @@ def runner_up(arr: List[Tuple[str, float]]) -> List[Tuple[str, float]]:
     return sorted(arr[i:j], key=lambda x: x[0])
 
 
-@enforce.runtime_validation
 def main() -> None:
     arr = list()
     for _ in range(int(input())):

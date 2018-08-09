@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 
-
-import enforce
-
-import collections
+from collections importCounter
 
 
-
-
-@enforce.runtime_validation
 def calculate_happiness(cnt_arr, set_a, set_b) -> int:
     happiness = 0
     for v, n in cnt_arr.most_common():
@@ -19,10 +13,9 @@ def calculate_happiness(cnt_arr, set_a, set_b) -> int:
     return happiness
 
 
-@enforce.runtime_validation
 def main() -> None:
     n, m = map(int, input().strip().split())
-    cnt_arr = collections.Counter(input().strip().split())
+    cnt_arr = Counter(input().strip().split())
     set_a = frozenset(input().strip().split())
     set_b = frozenset(input().strip().split())
     # assert(n == len(cnt_arr) and m == len(set_a) and m == len(set_b))

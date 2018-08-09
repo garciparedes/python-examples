@@ -2,10 +2,7 @@
 
 import itertools as it
 
-import enforce
 
-
-@enforce.runtime_validation
 def main() -> None:
     a = input().split(' ')
     b = input().split(' ')

@@ -2,10 +2,8 @@
 
 from collections import Counter
 from functools import reduce
-import enforce
 
 
-@enforce.runtime_validation
 def f(cnt: Counter, shape: str, price) -> int:
     if cnt[shape] > 0:
         cnt[shape] -= 1
@@ -14,7 +12,6 @@ def f(cnt: Counter, shape: str, price) -> int:
         return 0
 
 
-@enforce.runtime_validation
 def main() -> None:
     _ = int(input())
     x = input().split()

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 from collections import defaultdict
-import enforce
 
 
-@enforce.runtime_validation
 def main() -> None:
     n, m = map(int, input().strip().split())
     d = defaultdict(list)

@@ -2,17 +2,14 @@
 
 import re
 
-import enforce
 
 REGEX_PATTERN = r'[\._]\d+[a-zA-Z]*_?$'
 
 
-@enforce.runtime_validation
 def validate(s: str) -> bool:
     return re.match(REGEX_PATTERN, s) is not None
 
 
-@enforce.runtime_validation
 def main() -> None:
     n = int(input())
     s = ""

@@ -2,10 +2,7 @@
 
 from typing import List
 
-import enforce
 
-
-@enforce.runtime_validation
 def generate_list(x: int, y: int, z: int, n: int) -> List[List[int]]:
     arr = list()
     for i in range(x + 1):
@@ -16,7 +13,6 @@ def generate_list(x: int, y: int, z: int, n: int) -> List[List[int]]:
     return arr
 
 
-@enforce.runtime_validation
 def main() -> None:
     x = int(input())
     y = int(input())

@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-import enforce
-
 import cmath
 
 
-@enforce.runtime_validation
 def main() -> None:
     c = complex(input())
     print(abs(c))

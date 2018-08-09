@@ -2,10 +2,7 @@
 
 import statistics as s
 
-import enforce
 
-
-@enforce.runtime_validation
 def main() -> None:
     arr = dict()
     for _ in range(int(input())):

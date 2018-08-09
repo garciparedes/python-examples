@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 
-import enforce
-
-
-@enforce.runtime_validation
 def mutate_string(s: str, pos: int, ch: chr) -> str:
     return s[:pos] + ch + s[pos + 1:]
+    
 
-
-@enforce.runtime_validation
 def main() -> None:
     s = input()
     i, c = input().split()

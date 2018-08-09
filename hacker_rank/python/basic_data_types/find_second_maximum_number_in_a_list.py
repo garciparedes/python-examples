@@ -2,15 +2,11 @@
 
 from typing import Iterator
 
-import enforce
 
-
-@enforce.runtime_validation
 def runner_up(arr: Iterator[int]) -> int:
     return sorted(set(arr))[-2]
 
 
-@enforce.runtime_validation
 def main() -> None:
     _ = int(input())
     arr = map(int, input().split())

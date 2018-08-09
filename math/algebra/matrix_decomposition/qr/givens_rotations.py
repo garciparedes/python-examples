@@ -2,11 +2,9 @@
 
 from typing import Tuple
 
-import enforce
-
 import numpy as np
 
-@enforce.runtime_validation
+
 def rotator(A: np.ndarray, i: int, j: int, k: int) -> np.ndarray:
     G = np.eye(A.shape[0])
     r = np.sqrt(A[i, k] ** 2 + A[j, k] ** 2)
@@ -17,7 +15,7 @@ def rotator(A: np.ndarray, i: int, j: int, k: int) -> np.ndarray:
         G[j, j] = A[i, k] / r
     return G
 
-@enforce.runtime_validation
+
 def qr_givens(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     Q = np.eye(A.shape[0])
     for j in range(A.shape[1]):
@@ -28,7 +26,7 @@ def qr_givens(A: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         A = G @ A
     return (Q, A)
 
-@enforce.runtime_validation
+
 def main() -> None:
 
     A = np.array([[1,-1,1],

@@ -3,10 +3,7 @@
 from itertools import chain
 from string import ascii_lowercase
 
-import enforce
 
-
-@enforce.runtime_validation
 def print_rangoli(size: int) -> None:
     s = list()
     for i in reversed(range(size)):
@@ -17,7 +14,6 @@ def print_rangoli(size: int) -> None:
     print('\n'.join(chain(s, reversed(s[:-1]))))
 
 
-@enforce.runtime_validation
 def main() -> None:
     print_rangoli(int(input()))
 

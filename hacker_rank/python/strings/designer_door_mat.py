@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 
-import enforce
 
-
-@enforce.runtime_validation
 def generate_row(i, m, middle, corner) -> str:
     return (middle * (i * 2 + 1)).center(m, corner)
 
 
-@enforce.runtime_validation
 def door_mat(n: int, m: int, middle=".|.", corner="-") -> str:
     s = str()
     for i in range(n // 2):
@@ -19,7 +15,6 @@ def door_mat(n: int, m: int, middle=".|.", corner="-") -> str:
     return s
 
 
-@enforce.runtime_validation
 def main() -> None:
     print(door_mat(*map(int, input().strip().split())))
 
