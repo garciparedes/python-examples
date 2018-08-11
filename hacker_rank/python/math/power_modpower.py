@@ -12,7 +12,7 @@ def read_int() -> Iterable[int]:
 def main() -> None:
     a, b, m = it.islice(read_int(), 3)
 
-    print(pow(a, b), pow(a,b,m), sep="\n")
+    print(pow(a, b), pow(a, b, m), sep="\n")
 
 
 if __name__ == '__main__':
