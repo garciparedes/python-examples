@@ -19,7 +19,7 @@ def read_int_line_iterator() -> Iterable[int]:
 
 
 def main() -> None:
-    a_set_len = int(input().strip())
+    _ = int(input().strip())
     a_set = set(read_int_line_iterator())
 
     for _ in range(int(input().strip())):
