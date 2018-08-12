@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from typing import List, Iterable
-import itertools as it
+
 
 def read_line_iterator() -> List[str]:
     return input().strip().split(' ')
@@ -16,7 +16,7 @@ def read_float_line_iterator() -> Iterable[float]:
 
 
 def read_float_zipped_block_iterator(lines: int) -> Iterable[Iterable[float]]:
-    return zip(it.islice(read_float_line_iterator, lines))
+    return zip(*(read_float_line_iterator() for _ in range(lines)))
 
 
 def iterable_mean(data: Iterable[float]) -> float:
