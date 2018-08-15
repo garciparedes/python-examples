@@ -3,16 +3,16 @@
 from typing import List, Iterable
 
 
-def read_line_iterator() -> List[str]:
+def read_str_line_list() -> List[str]:
     return input().strip().split(' ')
 
 
 def read_int_line_iterator() -> Iterable[int]:
-    return map(int, read_line_iterator())
+    return map(int, read_str_line_list())
 
 
 def read_float_line_iterator() -> Iterable[float]:
-    return map(float, read_line_iterator())
+    return map(float, read_str_line_list())
 
 
 def read_float_zipped_block_iterator(lines: int) -> Iterable[Iterable[float]]:

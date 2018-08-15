@@ -13,12 +13,12 @@ def read_int() -> int:
     return int(read_str())
 
 
-def read_line_iterator() -> List[str]:
+def read_str_line_list() -> List[str]:
     return read_str().split(' ')
 
 
 def read_int_line_iterator() -> Iterable[int]:
-    return map(int, read_line_iterator())
+    return map(int, read_str_line_list())
 
 
 def read_int_line_list() -> List[int]:

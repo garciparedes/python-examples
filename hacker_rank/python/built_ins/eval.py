@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def read_str() -> str:
     return input().strip()
 
