@@ -37,6 +37,7 @@ def is_palindromic(number: int) -> bool:
 
     return i >= j
 
+
 def main() -> None:
     _ = read_int()
     numbers = read_int_line_list()
