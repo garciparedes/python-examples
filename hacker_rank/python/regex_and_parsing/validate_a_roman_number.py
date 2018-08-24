@@ -2,31 +2,21 @@
 
 import re
 
-TO_REPLACE_REGEX = re.compile(r'(?<= )((&&)|(\|\|))(?= )')
-
-REPLACE_DICT = {
-    '&&': 'and',
-    '||': 'or',
-}
+ROMAN_NUMBER_REGEX = re.compile(r'^(((?P<s1>[IXCM]){1,3}|(?P<s2>[VLD]){1}|(?P<s3>[VLD]){3})(?!(?P=s1)|(?P=s2)|(?P=s3)))+$')
 
 
 def read_str() -> str:
     return input()
 
 
-def read_int() -> int:
-    return int(read_str().strip())
-
-
-def replace_with_dict(text: str) -> str:
-    return re.sub(TO_REPLACE_REGEX, lambda x: REPLACE_DICT[x.group()], text)
+def is_valid_roman_number(text: str) -> bool:
+    return bool(re.match(ROMAN_NUMBER_REGEX, text))
 
 
 def main() -> None:
-    for _ in range(read_int()):
-        text = read_str()
-        result = replace_with_dict(text)
-        print(result)
+    text = read_str()
+    result = is_valid_roman_number(text)
+    print(result)
 
 
 if __name__ == '__main__':
