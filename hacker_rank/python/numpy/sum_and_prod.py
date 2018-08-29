@@ -21,12 +21,17 @@ def read_int_list() -> List[int]:
     return list(read_int_iterable())
 
 
-def main() -> None:
-    n, m = read_int_list()
+def read_array(n: int, m: int) -> np.ndarray:
     raw_data = []
     for _ in range(n):
         raw_data.append(read_int_list())
     data = np.array(raw_data)
+    return data
+
+
+def main() -> None:
+    n, m = read_int_list()
+    data = read_array(n, m)
     result = np.prod(data.sum(axis=0))
     print(result)
 
