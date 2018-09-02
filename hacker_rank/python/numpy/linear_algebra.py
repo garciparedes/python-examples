@@ -38,7 +38,7 @@ def main() -> None:
     a = read_array(n, n)
 
     y = np.linalg.det(a)
-    print(y)
+    print(np.round(y, decimals=2))
 
 
 if __name__ == '__main__':
