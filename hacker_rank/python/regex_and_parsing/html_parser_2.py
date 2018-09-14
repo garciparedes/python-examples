@@ -42,7 +42,6 @@ def main() -> None:
     for _ in range(read_int()):
         text += read_str()
         text += '\n'
-    print(text)
     show_html_stats(text)
 
 
