@@ -12,10 +12,12 @@ def read_int() -> int:
     return int(read_str())
 
 
-maxdepth = 0
-def depth(elem: ElementTree, level: int):
-    global maxdepth
-    # your code goes here
+def depth(elem: ElementTree, level: int = 0):
+    max_depth = level
+    for child in elem:
+        current_depth = depth(child, level + 1)
+        max_depth = max(max_depth, current_depth)
+    return max_depth
 
 
 def main() -> None:
@@ -23,8 +25,8 @@ def main() -> None:
     for _ in range(read_int()):
         xml_str += read_str()
     root = ElementTree.fromstring(xml_str)
-    depth(root, - 1)
-    print(maxdepth)
+    max_depth = depth(root)
+    print(max_depth)
 
 
 if __name__ == '__main__':
