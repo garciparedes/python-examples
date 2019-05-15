@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+tensorflow = ">=1.10.0"
+matplotlib = ">=2.2.2"
+pandas = ">=0.23.4"
+scipy = ">=1.1.0"
+mpmath = ">=1.0.0"
+sympy = ">=1.2"
+typing = ">=3.6.4"
+wolframalpha = ">=3.0.1"
+graphene-django = ">=2.2.0"
+scikit-learn = ">=0.21.1"
+
+[requires]
+python_version = "3.7"
