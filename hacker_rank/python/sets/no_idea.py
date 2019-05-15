@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from collections importCounter
+from collections import Counter
 
 
 def calculate_happiness(cnt_arr, set_a, set_b) -> int:
