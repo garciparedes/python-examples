@@ -4,22 +4,22 @@ from typing import Tuple, Sequence, List, Set
 Path = Sequence[Tuple[int, int]]
 
 
-def maze_solver(edges: Set[Tuple[int, int]], start: int, path: Path = tuple()) -> Path:
-    if 0 in chain(*path):
+def maze_solver(edges: Set[Tuple[int, int]], start_node: int, end_node: int, path: Path = tuple()) -> Path:
+    if end_node in chain(*path):
         return path
 
     best_path = None
-    for edge in set(edge for edge in edges if start in edge):
+    for edge in set(edge for edge in edges if start_node in edge):
 
-        current_start = edge[0] if edge[1] == start else edge[1]
+        current_start = edge[0] if edge[1] == start_node else edge[1]
         current_edges = set(edge for edge in edges if edge not in path)
         current_path = (*path, edge)
 
-        new_path = maze_solver(current_edges, current_start, current_path)
+        new_path = maze_solver(current_edges, current_start, end_node, current_path)
 
         if new_path is None:
             continue
-        if 0 not in chain(*new_path):
+        if end_node not in chain(*new_path):
             continue
         if best_path is not None and not len(new_path) < len(best_path):
             continue
@@ -37,7 +37,7 @@ def main() -> None:
         (1, 3),
     }
 
-    solution = maze_solver(graph, 3)
+    solution = maze_solver(graph, 3, 0)
     print(solution)
 
 
