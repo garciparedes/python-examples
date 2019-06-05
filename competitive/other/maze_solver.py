@@ -9,11 +9,12 @@ def maze_solver(edges: Set[Tuple[int, int]], start_node: int, end_node: int, pat
         return path
 
     best_path = None
-    for edge in set(edge for edge in edges if start_node in edge):
+    for current_edge in set(edge for edge in edges if start_node in edge):
 
-        current_start = edge[0] if edge[1] == start_node else edge[1]
-        current_edges = set(edge for edge in edges if edge not in path)
-        current_path = (*path, edge)
+        current_start = current_edge[0] if current_edge[1] == start_node else current_edge[1]
+        current_nodes = set(chain(*path))
+        current_edges = set(edge for edge in edges if not current_nodes.intersection(edge))
+        current_path = (*path, current_edge)
 
         new_path = maze_solver(current_edges, current_start, end_node, current_path)
 
