@@ -17,6 +17,8 @@ wolframalpha = ">=3.0.1"
 graphene-django = ">=2.2.0"
 scikit-learn = ">=0.21.1"
 fabric = "*"
+docker = "*"
+ortools = "*"
 
 [requires]
 python_version = "3.7"
