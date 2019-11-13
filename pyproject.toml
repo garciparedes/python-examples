@@ -18,7 +18,7 @@ scikit-learn = ">=0.21.1"
 fabric = "*"
 docker = "*"
 ortools = "^7.4"
-
+modin = {version = "^0.6.2", extras = ["all"]}
 [tool.poetry.dev-dependencies]
 
 [build-system]
