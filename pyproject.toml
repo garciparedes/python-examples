@@ -6,23 +6,23 @@ authors = ["garciparedes <sergio@garciparedes.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-tensorflow = "=1.15.0"
-matplotlib = ">=2.2.2"
-pandas = ">=0.23.4"
-scipy = ">=1.1.0"
-mpmath = ">=1.0.0"
-sympy = ">=1.2"
-wolframalpha = ">=3.0.1"
-graphene-django = ">=2.2.0"
-scikit-learn = ">=0.21.1"
+tensorflow = "^2.0"
+matplotlib = "^3.1"
+pandas = "^0.25"
+scipy = "^1."
+mpmath = "^1.0"
+sympy = "^1.2"
+wolframalpha = "^3.0"
+graphene-django = "^2.2"
+scikit-learn = "^0.21"
 fabric = "*"
 docker = "*"
 ortools = "^7.4"
-modin = {version = "^0.6.2", extras = ["all"]}
-deap = "^1.3.0"
-pyarrow = "^0.15.1"
+modin = {version = "^0.6", extras = ["all"]}
+deap = "^1.3"
+pyarrow = "^0.15"
 [tool.poetry.dev-dependencies]
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry^1.0"]
 build-backend = "poetry.masonry.api"
