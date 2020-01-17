@@ -1,4 +1,4 @@
-from numerical import tensorflow as tf
+import tensorflow as tf
 
 from numerical.data_science.res import DataSets
 
