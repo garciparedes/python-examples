@@ -6,7 +6,7 @@ authors = ["garciparedes <sergio@garciparedes.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-tensorflow = "=1.13.1"
+tensorflow = "=1.15.0"
 matplotlib = ">=2.2.2"
 pandas = ">=0.23.4"
 scipy = ">=1.1.0"
