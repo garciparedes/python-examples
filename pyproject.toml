@@ -21,6 +21,11 @@ ortools = "^7.4"
 modin = {version = "^0.6", extras = ["all"]}
 deap = "^1.3"
 pyarrow = "^0.15"
+dask = {extras = ["dataframe"], version = "^2.9.2"}
+vaex = "^2.5.0"
+jupyterlab = "^1.2.5"
+jupyter = "^1.0.0"
+tables = "^3.6.1"
 [tool.poetry.dev-dependencies]
 
 [build-system]
