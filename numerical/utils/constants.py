@@ -4,6 +4,7 @@ DIRECTORY_PATH = Path(__file__).parents[1]
 
 CSV_FILE_PATH = DIRECTORY_PATH / 'data.csv'
 PARQUET_FILE_PATH = DIRECTORY_PATH / 'data.parquet'
+ARROW_FILE_PATH = DIRECTORY_PATH / 'data.arrow'
 SQLITE_FILE_PATH = DIRECTORY_PATH / 'data.sqlite'
 HDF_FILE_PATH = DIRECTORY_PATH / 'data.hdf5'
 
