@@ -1,5 +1,4 @@
 import logging
-import sqlite3
 import pandas as pd
 
 from numerical.utils.constants import (
